@@ -10,7 +10,6 @@ var async = require('async'),
  * @param {!Function} callback
  */
 var renderArticle = function(data, metalsmith, options, callback) {
-  console.log(metalsmith.metadata());
   consolidate[options.engine].render(
     data.contents.toString(),
     extend({}, options, metalsmith.metadata(), data),
@@ -18,7 +17,7 @@ var renderArticle = function(data, metalsmith, options, callback) {
       if (error) {
         return callback(error);
       }
-      console.log(result);
+
       data.contents = result;
       callback();
     }
@@ -42,7 +41,8 @@ module.exports = function(options) {
   return function(files, metalsmith, done) {
     var articles = Object.keys(files).filter(function(file) {
           // Only operate on HTML or Markdown
-          return /\.(html|md)$/.test(path.extname(file)) && /archive/.test(file);
+          return /\.(html|md)$/.test(path.extname(file)) ||
+                 files[file].content_template;
         });
 
     async.each(articles, function(file, callback) {

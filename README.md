@@ -11,3 +11,5 @@ metalsmith.use({
   engine: 'swig'
 });
 ```
+
+Runs automatically on `.html` and `.md` files. To add to other files, set `content_template` within the frontmatter.
