@@ -27,6 +27,7 @@ plugin(files, metalsmith, function(error) {
     throw error;
   }
 
+  assert(Buffer.isBuffer(files['real.html'].contents), 'Contents in buffer');
   assert.equal(files['real.html'].contents.toString(), 'HI',
     'Simple template');
   assert.equal(files['feed.xml'].contents.toString(), 'HI',

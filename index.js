@@ -18,7 +18,7 @@ var renderArticle = function(data, metalsmith, options, callback) {
         return callback(error);
       }
 
-      data.contents = result;
+      data.contents = new Buffer(result);
       callback();
     }
   );
