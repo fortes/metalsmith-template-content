@@ -23,11 +23,18 @@ var files = {
     };
 
 plugin(files, metalsmith, function(error) {
-  assert(files['real.html'].contents, 'HI', 'Simple template');
-  assert(files['feed.xml'].contents, 'HI', 'content_template opt-in');
-  
+  if (error) {
+    throw error;
+  }
+
+  assert.equal(files['real.html'].contents.toString(), 'HI',
+    'Simple template');
+  assert.equal(files['feed.xml'].contents.toString(), 'HI',
+    'content_template opt-in');
+
   // Make sure non-HTML / MD is ignored
-  assert(files['bogus.jpg'].contents, '{{{ Hi | upper }}', 'Ignore .jpg');
+  assert.equal(files['bogus.jpg'].contents.toString(), '{{ "Hi" | upper }}',
+    'Ignore .jpg');
 
   console.log('All tests passed');
 });
