@@ -1,6 +1,8 @@
 # Deprecated! Do not use!
 
-[metalsmith-in-place](https://github.com/superwolff/metalsmith-in-place) is a superset of this plugin and should be used instead.
+[metalsmith-in-place](https://github.com/superwolff/metalsmith-in-place) is a superset of this plugin and should be used instead. 
+
+[metalsmith-jstransformer](https://github.com/RobLoach/metalsmith-jstransformer) is also a superset, and it is what I currently use instead.
 
 # metalsmith-template-content
 
